@@ -9,6 +9,10 @@ const PORT = process.env?.PORT || 8000
 
 require('express-async-errors') // for async errors to errorHandler
 
+// connection with db
+const { dbConnection } = require('./src/configs/dbConnection')
+dbConnection()
+
 app.use(express.json()) //for ability to get json
 
 
@@ -23,4 +27,4 @@ app.all('/api', (req,res) => {
 })
 
 //for running server
-app.listen(PORT, () => console.log('http://127.0.0.1:' + PORT))
+app.listen(PORT, () => console.log('localhost:' + PORT))
