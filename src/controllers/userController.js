@@ -54,9 +54,15 @@ module.exports = {
                     "email": "test@site.com",
                     "name": "test",
                     "lastName": "test",
+                    "image":"http://test.com",
+                    "intro":"test",
                     "isAdmin": false,
                     "isActive": true,
-                    "isGueast":false,
+                    "isGuest":false,
+                    "blogsCounter":0,
+                    "likesCounter":0,
+                    "viewsCounter":0,
+                    "commentsCounter":0
                 },
             }
     */
@@ -81,9 +87,15 @@ module.exports = {
                     "email": "test@site.com",
                     "name": "test",
                     "lastName": "test",
+                    "image":"http://test.com",
+                    "intro":"test",
                     "isAdmin": false,
                     "isActive": true,
-                    "isGueast":false,
+                    "isGuest":false,
+                    "blogsCounter":0,
+                    "likesCounter":0,
+                    "viewsCounter":0,
+                    "commentsCounter":0
                 },
             }
     */

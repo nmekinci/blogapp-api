@@ -35,6 +35,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    image: {
+        type: String,
+        trim: true,
+    },
+    intro: {
+        type: String,
+        trim: true,
+    },
     isActive: {
         type: Boolean,
         default: true,
@@ -46,7 +54,19 @@ const UserSchema = new mongoose.Schema({
     isGuest: {
         type: Boolean,
         default: false,
-    }
+    },
+    blogsCounter: {
+        type: Number,
+    },
+    likesCounter: {
+        type: Number,
+    },
+    viewsCounter: {
+        type: Number,
+    },
+    commentsCounter: {
+        type: Number,
+    },
 },{collection: 'users', timestamps: true})
 
 
