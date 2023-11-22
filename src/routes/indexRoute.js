@@ -11,6 +11,8 @@ const router = require('express').Router()
 router.use('/users', require('./userRoute'))
 // token:
 router.use('/tokens', require('./tokenRoute'))
+// blog:
+router.use('/blogs', require('./blogRoute'))
 
 
 
