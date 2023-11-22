@@ -13,6 +13,8 @@ router.use('/users', require('./userRoute'))
 router.use('/tokens', require('./tokenRoute'))
 // blog:
 router.use('/blogs', require('./blogRoute'))
+// view:
+router.use('/views', require('./viewRoute'))
 
 
 
