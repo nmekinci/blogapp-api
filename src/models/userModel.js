@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 const UserSchema = new mongoose.Schema({
-    username: {
+    userName: {
         type: String,
         trim: true,
         required: true,
@@ -27,11 +27,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         set: (password) => passwordEncrypt(password)
     },
-    name: {
+    firstName: {
         type: String,
         trim: true,
     },
-    lastname: {
+    lastName: {
         type: String,
         trim: true,
     },

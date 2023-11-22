@@ -9,6 +9,8 @@ const router = require('express').Router()
 
 // user:
 router.use('/users', require('./userRoute'))
+// token:
+router.use('/tokens', require('./tokenRoute'))
 
 
 

@@ -26,7 +26,7 @@ app.all('/api', (req,res) => {
     })
 })
 
-app.use(require('./src/routes'))
+app.use(require('./src/routes/indexRoute'))
 
 //for running server
 app.listen(PORT, () => console.log('localhost:' + PORT))
