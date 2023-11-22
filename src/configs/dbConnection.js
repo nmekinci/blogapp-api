@@ -13,6 +13,5 @@ const dbConnection = function() {
 
 /* ------------------------------------------------------- */
 module.exports = {
-    mongoose,
     dbConnection
 } 
