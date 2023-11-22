@@ -21,10 +21,12 @@ app.all('/api', (req,res) => {
     res.send({
         error: false,
         message: "It's Blog API service, Wellcome..",
-        isLogin: req.isLogin,
-        user: req.user
+        // isLogin: req.isLogin,
+        // user: req.user
     })
 })
+
+app.use(require('./src/routes'))
 
 //for running server
 app.listen(PORT, () => console.log('localhost:' + PORT))
