@@ -15,10 +15,11 @@ const CategorySchema = new mongoose.Schema(
         trim:true,
         unique: true
     },
-    approvedByAdmin:{
-      type: Boolean,
-      default: false,
-    },
+    approvedByAdmin: {
+        type:String,
+        required:true,
+        enum: [0,1,2,3] // 0 waiting, 1 seen, 2 ok, 3 refused
+      },
   },
   {
     collection: "categories",

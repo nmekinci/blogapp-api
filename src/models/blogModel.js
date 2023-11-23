@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const BlogSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Categories',
+        ref: 'Category',
         required: true
     },
     creator: {
@@ -31,10 +31,11 @@ const BlogSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    approvedByAdmin:{
-        type: Boolean,
-        default: false
-    },
+    approvedByAdmin: {
+        type:String,
+        required:true,
+        enum: [0,1,2,3] // 0 waiting, 1 seen, 2 ok, 3 refused
+      },
     likesCounter:{
         type: Number,
         default:0
