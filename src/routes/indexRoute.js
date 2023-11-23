@@ -17,6 +17,8 @@ router.use('/blogs', require('./blogRoute'))
 router.use('/views', require('./viewRoute'))
 // like:
 router.use('/likes', require('./likeRoute'))
+// report:
+router.use('/reports', require('./reportRoute'))
 
 
 
