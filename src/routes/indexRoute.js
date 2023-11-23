@@ -19,6 +19,8 @@ router.use('/views', require('./viewRoute'))
 router.use('/likes', require('./likeRoute'))
 // report:
 router.use('/reports', require('./reportRoute'))
+// comment:
+router.use('/comments', require('./commentRoute'))
 
 
 

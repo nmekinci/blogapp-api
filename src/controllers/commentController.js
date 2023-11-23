@@ -1,6 +1,6 @@
 "use strict";
 
-const View = require("../models/viewModel");
+const Comment = require("../models/commentModel");
 const {
   getModelList,
   getModelListDetails,
@@ -9,8 +9,8 @@ const {
 module.exports = {
   list: async (req, res) => {
     /*
-            #swagger.tags = ["Views"]
-            #swagger.summary = "List Views"
+            #swagger.tags = ["Comments"]
+            #swagger.summary = "List Comments"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -20,21 +20,21 @@ module.exports = {
                 </ul>
             `
         */
-    const data = await getModelList(View);
+    const data = await getModelList(Comment);
 
     res.status(200).send({
       error: false,
       count: data.length,
       result: data,
-      details: await getModelListDetails(View),
+      details: await getModelListDetails(Comment),
     });
   },
   read: async (req, res) => {
     /*
-        #swagger.tags = ["Views"]
-        #swagger.summary = "Get Single View"
+        #swagger.tags = ["Comments"]
+        #swagger.summary = "Get Single Comment"
     */
-    const data = await View.findOne({ _id: req.params.id });
+    const data = await Comment.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
@@ -43,19 +43,19 @@ module.exports = {
   },
   create: async (req, res) => {
     /*
-            #swagger.tags = ["Views"]
-            #swagger.summary = "Create View"
+            #swagger.tags = ["Comments"]
+            #swagger.summary = "Create Comment"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
                 schema: {
                     "userId": "test",
                     "blogId": "test",
-                    "itWasAGuest": false,
+                    "approvedByAdmin": false,
                     },
             }
     */
-    const data = await View.create(req.body);
+    const data = await Comment.create(req.body);
 
     res.status(201).send({
       error: false,
@@ -65,34 +65,34 @@ module.exports = {
   },
   update: async (req, res) => {
     /*
-            #swagger.tags = ["Views"]
-            #swagger.summary = "Create View"
+            #swagger.tags = ["Comments"]
+            #swagger.summary = "Create Comment"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
                 schema: {
                     "userId": "test",
                     "blogId": "test",
-                    "itWasAGuest": false,
+                    "approvedByAdmin": false,
                     },
             }
     */
-    const data = await View.updateOne({ _id: req.params.id }, req.body, {
+    const data = await Comment.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
 
     res.status(200).send({
       error: false,
       data,
-      new: await View.findOne({ _id: req.params.id }),
+      new: await Comment.findOne({ _id: req.params.id }),
     });
   },
   delete: async (req, res) => {
     /*
-            #swagger.tags = ["Views"]
-            #swagger.summary = "Delete View"
+            #swagger.tags = ["Comments"]
+            #swagger.summary = "Delete Comment"
     */
-    const data = await View.deleteOne({ _id: req.params.id });
+    const data = await Comment.deleteOne({ _id: req.params.id });
 
     res.status(data.deletedCount ? 204 : 404).send({
       error: !data.deletedCount,
