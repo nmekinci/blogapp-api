@@ -1,10 +1,10 @@
 "use strict";
 
 const Category = require("../models/categoryModel");
-const {
-  getModelList,
-  getModelListDetails,
-} = require("../middlewares/findSearchSortPage");
+// const {
+//   getModelList,
+//   getModelListDetails,
+// } = require("../middlewares/findSearchSortPage");
 
 module.exports = {
   list: async (req, res) => {
@@ -20,13 +20,13 @@ module.exports = {
                 </ul>
             `
         */
-    const data = await getModelList(Category);
+    const data = await req.getModelList(Category);
 
     res.status(200).send({
       error: false,
       count: data.length,
       result: data,
-      details: await getModelListDetails(Category),
+      details: await req.getModelListDetails(Category),
     });
   },
   read: async (req, res) => {

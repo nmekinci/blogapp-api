@@ -1,20 +1,13 @@
 "use strict";
-/* -------------------------------------------------------
-    NODEJS EXPRESS | CLARUSWAY FullStack Team
-------------------------------------------------------- */
+
 // app.use(findSearchSortPage):
 
 module.exports = (req, res, next) => {
   // Searching & Sorting & Pagination:
 
   // SEARCHING: URL?search[key1]=value1&search[key2]=value2
-  let search = req.query?.search || {};
+  const search = req.query?.search || {};
   for (let key in search) search[key] = { $regex: search[key], $options: "i" };
-  /* Alternative Searching: *
-    let where = [];
-    for (let key in search) where.push(`this.${key}.toString().includes('${search[key]}')`)
-    search = where.length ? { $where: where.join(' && ') } : {}
-/* Alternative Searching: */
 
   // Cancelled -> SORTING: URL?sort[key1]=1&sort[key2]=-1 (1:ASC, -1:DESC)
   // mongoose=^8.0 -> SORTING: URL?sort[key1]=asc&sort[key2]=desc (asc: A->Z - desc: Z->A)
@@ -32,19 +25,21 @@ module.exports = (req, res, next) => {
   skip = skip > 0 ? skip : page * limit;
 
   // Run SearchingSortingPagination engine for Model:
-  const getModelList = async function (Model, filters = {}, populate = null) {
+  res.getModelList = async function (Model, filters = {}, populate = null) {
     const filtersAndSearch = { ...filters, ...search };
 
-    // return await Model.find(filtersAndSearch).sort(sort).skip(skip).limit(limit).populate(populate)
-    // FOR REACT PROJECT:
-    return await Model.find(filtersAndSearch).populate(populate);
+    return await Model.find(filtersAndSearch)
+      .sort(sort)
+      .skip(skip)
+      .limit(limit)
+      .populate(populate);
   };
 
   // Details:
-  const getModelListDetails = async function (Model, filters = {}) {
+  res.getModelListDetails = async function (Model, filters = {}) {
     const filtersAndSearch = { ...filters, ...search };
 
-    const dataCount = await Model.count(filtersAndSearch);
+    const dataCount = await Model.countDocuments(filtersAndSearch);
 
     let details = {
       search,
@@ -65,5 +60,6 @@ module.exports = (req, res, next) => {
     if (details.totalRecords <= limit) details.pages = false;
     return details;
   };
-  return { getModelList, getModelListDetails };
+
+  next();
 };

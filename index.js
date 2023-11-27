@@ -15,9 +15,13 @@ dbConnection()
 
 app.use(express.json()) //for ability to get json
 
+//Middlewares
+// res.getModelList():
+app.use(require('./src/middlewares/findSearchSortPage'))
+
 
 //Home Path for API service
-app.all('/api', (req,res) => {
+app.all('/', (req,res) => {
     res.send({
         error: false,
         message: "It's Blog API service, Wellcome..",
@@ -26,6 +30,7 @@ app.all('/api', (req,res) => {
     })
 })
 
+//Routes for API services
 app.use(require('./src/routes/indexRoute'))
 
 //for running server
