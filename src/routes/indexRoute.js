@@ -4,13 +4,14 @@ const router = require('express').Router()
 
 // routes/:
 
-
-
-
+//auth
+router.use('/auth', require('./authRoute'))
 // user:
 router.use('/users', require('./userRoute'))
 // token:
 router.use('/tokens', require('./tokenRoute'))
+
+
 // blog:
 router.use('/blogs', require('./blogRoute'))
 // view:

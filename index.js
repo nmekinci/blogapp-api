@@ -16,6 +16,9 @@ dbConnection()
 app.use(express.json()) //for ability to get json
 
 //Middlewares
+//Authentication
+app.use(require('./src/middlewares/authentication'))
+
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
