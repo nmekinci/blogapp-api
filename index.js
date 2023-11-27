@@ -33,5 +33,8 @@ app.all('/', (req,res) => {
 //Routes for API services
 app.use(require('./src/routes/indexRoute'))
 
+//ErrorHandler
+app.use(require('./src/middlewares/errorHandler'))
+
 //for running server
 app.listen(PORT, () => console.log('localhost:' + PORT))
