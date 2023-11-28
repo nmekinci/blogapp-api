@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const blog = require('../controllers/blogController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(blog.list)
