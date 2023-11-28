@@ -1,23 +1,19 @@
 "use strict";
 
 const Token = require("../models/tokenModel");
-const {
-  getModelList,
-  getModelListDetails,
-} = require("../middlewares/findSearchSortPage");
 
 module.exports = {
   list: async (req, res) => {
     /*
         #swagger.ignore = true
     */
-    const data = await getModelList(Token);
+    const data = await res.getModelList(Token);
 
     res.status(200).send({
       error: false,
       count: data.length,
       result: data,
-      details: await getModelListDetails(Token),
+      details: await res.getModelListDetails(Token),
     });
   },
   read: async (req, res) => {

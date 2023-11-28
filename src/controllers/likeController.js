@@ -1,10 +1,6 @@
 "use strict";
 
 const Like = require("../models/likeModel");
-const {
-  getModelList,
-  getModelListDetails,
-} = require("../middlewares/findSearchSortPage");
 
 module.exports = {
   list: async (req, res) => {
@@ -20,13 +16,13 @@ module.exports = {
                 </ul>
             `
         */
-    const data = await getModelList(Like);
+    const data = await res.getModelList(Like);
 
     res.status(200).send({
       error: false,
       count: data.length,
       result: data,
-      details: await getModelListDetails(Like),
+      details: await res.getModelListDetails(Like),
     });
   },
   read: async (req, res) => {

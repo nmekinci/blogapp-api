@@ -1,10 +1,6 @@
 "use strict";
 
 const User = require("../models/userModel");
-// const {
-//   getModelList,
-//   getModelListDetails,
-// } = require("../middlewares/findSearchSortPage");
 
 module.exports = {
   list: async (req, res) => {
