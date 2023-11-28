@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const like = require('../controllers/likeController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(like.list)

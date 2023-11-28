@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const view = require('../controllers/viewController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(view.list)

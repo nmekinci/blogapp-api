@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const comment = require('../controllers/commentController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(comment.list)

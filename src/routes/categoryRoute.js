@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const category = require('../controllers/categoryController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(category.list)

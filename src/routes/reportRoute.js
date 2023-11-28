@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 
 const report = require('../controllers/reportController')
-
+const permissions = require('../middlewares/permissions')
 
 router.route('/')
     .get(report.list)
