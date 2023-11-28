@@ -34,7 +34,7 @@ const BlogSchema = new mongoose.Schema({
     approvedByAdmin: {
         type:String,
         required:true,
-        enum: [0,1,2,3] // 0 waiting, 1 seen, 2 ok, 3 refused
+        enum: ["waiting", "seen", "ok", "refused"] 
       },
     likesCounter:{
         type: Number,

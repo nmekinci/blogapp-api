@@ -41,3 +41,6 @@ app.use(require('./src/middlewares/errorHandler'))
 
 //for running server
 app.listen(PORT, () => console.log('localhost:' + PORT))
+
+// Syncronization (must be in commentLine):
+// require('./src/helpers/sync')() // !!! It clear database.
