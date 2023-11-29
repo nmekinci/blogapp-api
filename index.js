@@ -19,6 +19,9 @@ app.use(express.json()) //for ability to get json
 //Authentication
 app.use(require('./src/middlewares/authentication'))
 
+//Logger
+app.use(require('./src/middlewares/logger'))
+
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
@@ -43,4 +46,4 @@ app.use(require('./src/middlewares/errorHandler'))
 app.listen(PORT, () => console.log('localhost:' + PORT))
 
 // Syncronization (must be in commentLine):
-// require('./src/helpers/sync')() // !!! It clear database.
+// require('./src/helpers/sync')() // !!! It clears database.
