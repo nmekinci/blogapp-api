@@ -31,6 +31,7 @@ app.all('/', (req,res) => {
     res.send({
         error: false,
         message: "It's Blog API service, Wellcome..",
+        documents: '👉/documents'
         // isLogin: req.isLogin,
         // user: req.user
     })

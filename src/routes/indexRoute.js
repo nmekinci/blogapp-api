@@ -26,5 +26,9 @@ router.use('/comments', require('./commentRoute'))
 router.use('/categories', require('./categoryRoute'))
 
 
+// document:
+router.use('/documents', require('./documentRoute'))
+
+
 
 module.exports = router
