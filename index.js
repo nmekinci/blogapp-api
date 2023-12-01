@@ -15,6 +15,23 @@ dbConnection()
 
 app.use(express.json()) //for ability to get json
 
+/* Templates Implementation Area */
+const ejs = require('ejs')
+ejs.openDelimiter = '{'
+ejs.closeDelimiter = '}'
+
+app.set('views', './public')
+app.set('view engine', 'ejs')
+
+/* Templates Implementation Area */
+
+
+// Accept form data & convert to object:
+app.use(express.urlencoded({ extended: true }))
+
+// StaticFiles:
+app.use('/assets', express.static('./public/assets'))
+
 //Middlewares
 //Authentication
 app.use(require('./src/middlewares/authentication'))

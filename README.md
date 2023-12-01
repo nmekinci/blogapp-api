@@ -7,7 +7,7 @@ created a .gitignore file and filled
 npm i mongoose
 npm i dotenv
 npm i morgan
-npm install --save-dev swagger-autogen 
+npm i swagger-autogen 
 and add above codes to inside of package.json
 
                 "scripts": {
@@ -17,5 +17,7 @@ and add above codes to inside of package.json
 
 npm i redoc-express
 npm i swagger-ui-express
+npm i ejs
+
 
 https://drawsql.app/teams/pc117-team/diagrams/blog-api
