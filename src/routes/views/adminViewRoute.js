@@ -31,11 +31,12 @@ router.route("/commentReq/:id")
     .put(admin.comment)
     .delete(admin.comment)
 
-
-
-
 router.route("/reportReq")
     .get(admin.report)
+router.route("/reportReq/:id")
+    .get(admin.report)
+    .put(admin.report)
+    .delete(admin.report)
 
 
 module.exports = router
