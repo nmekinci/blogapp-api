@@ -5,17 +5,47 @@ const Report = require('../../models/reportModel')
 const Comment = require('../../models/commentModel')
 const Category = require('../../models/categoryModel')
 
+// approvedByAdmin: {
+//     type:String,
+//     required:true,
+//     enum: ["waiting", "seen", "ok", "refused"] 
+//   }
+
 //only "waiting" records
 const filter = {approvedByAdmin : "waiting"}
 
 const list =  async (req,res, modelName, populate) => {
     const data = await res.getModelList(modelName, filter, populate)
 
-    res.render(`${modelName}list`, {
+    res.render(`${modelName}List`, {
         details: await res.getModelListDetails(modelName, filter),
         data,
         // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
     })
+}
+const read = async (req,res, modelName, populate) => {
+    const data = await modelName.findOne({ _id: req.params.id, ...filter}).populate(populate)
+    res.render(`${modelName}Read`, {
+        data,
+    })
+}
+const update = async (req,res, modelName) => {
+    if (req && req.body) {
+        req.body.approvedByAdmin = 'ok';
+      }
+    // req?.body?.approvedByAdmin = 'ok'
+    const data = await modelName.updateOne({ _id: req.params.id, ...filter })
+    res.render(`${modelName}Update`, {
+        data,
+    })
+}
+const del = async (req,res, modelName) => {
+    if (req && req.body) {
+        req.body.approvedByAdmin = 'refused';
+      }
+    // req?.body?.approvedByAdmin = 'refused'
+    const data = await modelName.deleteOne({ _id: req.params.id, ...filter })
+    res.redirect('/admin')
 }
 
 
@@ -29,32 +59,97 @@ module.exports = {
     //         // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
     //     })
     // },
-    blogList : list(req.res,Blog,[creator]),
-    commentList : async (req,res) => {
-        const data = await res.getModelList(Comment, filter, [userId, blogId])
-
-        res.render('commentList', {
-            details: await res.getModelListDetails(Comment, filter),
-            data,
-            // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
-        })
+    blog : async (req,res) => {
+        if (req?.params?.id){
+            switch (req?.method) {
+            case 'GET':
+              await read(req, res, Blog, ['creator']);
+              break;
+            case 'PUT':
+              await update(req, res, Blog);
+              break;
+            case 'DELETE':
+              await del(req, res, Blog);
+              break;
+            }}
+        else
+        {await list(req,res,Blog,['creator'])}
     },
-    reportList : async (req,res) => {
-        const data = await res.getModelList(Report, filter, [userId, blogId])
+    // category : async (req,res) => {
+    //     const data = await res.getModelList(Category, filter, [userId])
 
-        res.render('reportList', {
-            details: await res.getModelListDetails(Report, filter),
-            data,
-            // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
-        })
+    //     res.render('categoryList', {
+    //         details: await res.getModelListDetails(Category, filter),
+    //         data,
+    //         // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
+    //     })
+    // },
+    category : async (req,res) => {
+        if (req?.params?.id){
+            switch (req?.method) {
+            case 'GET':
+              await read(req, res, Category, ['userId']);
+              break;
+            case 'PUT':
+              await update(req, res, Category);
+              break;
+            case 'DELETE':
+              await del(req, res, Category);
+              break;
+            }}
+        else
+        {await list(req,res,Category,['userId'])}
     },
-    categoryList : async (req,res) => {
-        const data = await res.getModelList(Category, filter, [userId])
 
-        res.render('categoryList', {
-            details: await res.getModelListDetails(Category, filter),
-            data,
-            // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
-        })
+
+    // comment : async (req,res) => {
+    //     const data = await res.getModelList(Comment, filter, [userId, blogId])
+
+    //     res.render('commentList', {
+    //         details: await res.getModelListDetails(Comment, filter),
+    //         data,
+    //         // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
+    //     })
+    // },
+    comment : async (req,res) => {
+        if (req?.params?.id){
+            switch (req?.method) {
+            case 'GET':
+              await read(req, res, Comment, ['userId','blogId']);
+              break;
+            case 'PUT':
+              await update(req, res, Comment);
+              break;
+            case 'DELETE':
+              await del(req, res, Comment);
+              break;
+            }}
+        else
+        {await list(req,res,Comment,['userId','blogId'])}
+    },
+    // report : async (req,res) => {
+    //     const data = await res.getModelList(Report, filter, [userId, blogId])
+
+    //     res.render('reportList', {
+    //         details: await res.getModelListDetails(Report, filter),
+    //         data,
+    //         // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')
+    //     })
+    // },
+    report : async (req,res) => {
+        if (req?.params?.id){
+            switch (req?.method) {
+            case 'GET':
+              await read(req, res, Report, ['userId','blogId']);
+              break;
+            case 'PUT':
+              await update(req, res, Report);
+              break;
+            case 'DELETE':
+              await del(req, res, Report);
+              break;
+            }}
+        else
+        {await list(req,res,Report,['userId','blogId'])}
     },
 }
