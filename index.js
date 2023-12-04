@@ -19,6 +19,9 @@ app.use(express.json()) //for ability to get json
 const ejs = require('ejs')
 ejs.openDelimiter = '{'
 ejs.closeDelimiter = '}'
+// app.set('view options', {
+//     openDelimiter: '{', closeDelimiter: '}'
+// })
 
 app.set('views', './public')
 app.set('view engine', 'ejs')
@@ -42,9 +45,15 @@ app.use(require('./src/middlewares/logger'))
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-
-//Home Path for API service
+//Home Path for TEMPLATE and SESSION
 app.all('/', (req,res) => {
+    // res.redirect('/home')
+})
+app.use('/admin', require('./src/routes/views/adminViewRoute'))
+
+
+//Home Path for API service and JWT
+app.all('/api', (req,res) => {
     res.send({
         error: false,
         message: "It's Blog API service, Wellcome..",
@@ -54,7 +63,7 @@ app.all('/', (req,res) => {
     })
 })
 
-//Routes for API services
+//Routes for API services 
 app.use(require('./src/routes/indexRoute'))
 
 //ErrorHandler
