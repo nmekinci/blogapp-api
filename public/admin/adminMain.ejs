@@ -1,2 +1,17 @@
+{%- include('partials/header') -%}
+<h1>Admin panel Main</h1>
 
+{% if (details) { %}
+<p>
+    details: {%= details %}
+    {%= console.log(details) %}
+</p>
+{% } %} 
+{% if (data) { %}
+<p>
+    data: {%= data %}
+    data: {%= console.log(data) %}
+</p>
+{% } %} 
 
+{%- include('partials/footer') -%}

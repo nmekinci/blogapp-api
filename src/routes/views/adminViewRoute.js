@@ -8,7 +8,7 @@ const permissions = require("../../middlewares/permissions");
 router.all("/", permissions.isAdmin);
 
 router.route("/")
-    .get(admin.blog, admin.category, admin.comment, admin.report);
+    .get(admin.all);
 
 router.route("/blogReq")
     .get(admin.blog)

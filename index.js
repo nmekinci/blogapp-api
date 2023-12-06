@@ -23,7 +23,7 @@ ejs.closeDelimiter = '}'
 //     openDelimiter: '{', closeDelimiter: '}'
 // })
 
-app.set('views', './public')
+app.set('views', './public/admin')
 app.set('view engine', 'ejs')
 
 /* Templates Implementation Area */
@@ -47,7 +47,7 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 
 //Home Path for TEMPLATE and SESSION
 app.all('/', (req,res) => {
-    // res.redirect('/home')
+    res.redirect('/admin')
 })
 app.use('/admin', require('./src/routes/views/adminViewRoute'))
 
