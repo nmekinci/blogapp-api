@@ -14,11 +14,11 @@ const Category = require("../../models/categoryModel");
 //only "waiting" records
 const filter = { approvedByAdmin: "waiting" };
 
-const list = async (req, res, modelName, populate) => {
+const list = async (req, res, modelName, path, populate) => {
   const data = await res.getModelList(modelName, filter, populate);
 
   // res.render(`${modelName}List`, {
-  res.render("adminMain", {
+  res.render(path, {
     details: await res.getModelListDetails(modelName, filter),
     data,
     // pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, '')

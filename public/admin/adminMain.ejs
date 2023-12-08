@@ -1,26 +1,29 @@
 {%- include('partials/header') -%}
-<h1>Admin panel Main</h1>
 
-<div class="d-grid col-6 mx-auto gap-2">
-  <button type="button" class="btn btn-primary">
+
+<div id="buttons" class="d-grid col-6 mx-auto gap-2">
+  <button id="blog" type="button" class="btn btn-primary" >
     Blog Requests
     <span class="badge text-bg-success"
       >{%= details?.detailsBlog?.totalRecords %}</span
     >
   </button>
-  <button type="button" class="btn btn-primary">
-    Category Requests
-    <span class="badge text-bg-success"
-      >{%= details?.detailsCategory?.totalRecords %}</span
-    >
-  </button>
-  <button type="button" class="btn btn-primary">
+  <a href="/categories">
+
+      <button id="category" type="button" class="btn btn-primary">
+        Category Requests
+        <span class="badge text-bg-success"
+          >{%= details?.detailsCategory?.totalRecords %}</span
+        >
+      </button>
+  </a>
+  <button id="comment" type="button" class="btn btn-primary">
     Comment Requests
     <span class="badge text-bg-success"
       >{%= details?.detailsComment?.totalRecords %}</span
     >
   </button>
-  <button type="button" class="btn btn-primary">
+  <button id="report" type="button" class="btn btn-primary">
     Report Requests
     <span class="badge text-bg-success"
       >{%= details?.detailsReport?.totalRecords %}</span
@@ -33,3 +36,26 @@
 {% } %} {% if (data) { %}
 <p>data: {%= data %} data: {%= console.log(data) %}</p>
 {% } %} {%- include('partials/footer') -%}
+
+<script>
+    document.getElementById('buttons').addEventListener('click',(e) => {
+        switch (e.target.id) {
+            case "blog":
+            console.log('blog clicked');
+            (res,req)=> res.render("adminCategory", {
+    data: {e}
+  });
+                break;
+            case "category":
+            console.log('category clicked');
+                break;
+            case "comment":
+            console.log('comment clicked');
+                break;
+            case "report":
+            console.log('report clicked');
+                break;
+        }
+    })
+
+</script>

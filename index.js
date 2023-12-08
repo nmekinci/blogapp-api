@@ -46,10 +46,11 @@ app.use(require('./src/middlewares/logger'))
 app.use(require('./src/middlewares/findSearchSortPage'))
 
 //Home Path for TEMPLATE and SESSION
-app.all('/', (req,res) => {
+app.all('/view', (req,res) => {
     res.redirect('/admin')
 })
 app.use('/admin', require('./src/routes/views/adminViewRoute'))
+app.use('/admin/category', require('./src/routes/views/adminCategoryRoute'))
 
 
 //Home Path for API service and JWT
