@@ -1,17 +1,35 @@
 {%- include('partials/header') -%}
 <h1>Admin panel Main</h1>
 
-{% if (details) { %}
-<p>
-    details: {%= details %}
-    {%= console.log(details) %}
-</p>
-{% } %} 
-{% if (data) { %}
-<p>
-    data: {%= data %}
-    data: {%= console.log(data) %}
-</p>
-{% } %} 
+<div class="d-grid col-6 mx-auto gap-2">
+  <button type="button" class="btn btn-primary">
+    Blog Requests
+    <span class="badge text-bg-success"
+      >{%= details?.detailsBlog?.totalRecords %}</span
+    >
+  </button>
+  <button type="button" class="btn btn-primary">
+    Category Requests
+    <span class="badge text-bg-success"
+      >{%= details?.detailsCategory?.totalRecords %}</span
+    >
+  </button>
+  <button type="button" class="btn btn-primary">
+    Comment Requests
+    <span class="badge text-bg-success"
+      >{%= details?.detailsComment?.totalRecords %}</span
+    >
+  </button>
+  <button type="button" class="btn btn-primary">
+    Report Requests
+    <span class="badge text-bg-success"
+      >{%= details?.detailsReport?.totalRecords %}</span
+    >
+  </button>
+</div>
 
-{%- include('partials/footer') -%}
+{% if (details) { %}
+<p>details: {%= details %} {%= console.log(details) %}</p>
+{% } %} {% if (data) { %}
+<p>data: {%= data %} data: {%= console.log(data) %}</p>
+{% } %} {%- include('partials/footer') -%}
