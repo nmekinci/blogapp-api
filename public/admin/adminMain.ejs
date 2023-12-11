@@ -1,21 +1,19 @@
 {%- include('partials/header') -%}
 
-
 <div id="buttons" class="d-grid col-6 mx-auto gap-2">
-  <button id="blog" type="button" class="btn btn-primary" >
+  <button id="blog" type="button" class="btn btn-primary">
     Blog Requests
     <span class="badge text-bg-success"
       >{%= details?.detailsBlog?.totalRecords %}</span
     >
   </button>
-  <a href="/categories">
-
-      <button id="category" type="button" class="btn btn-primary">
-        Category Requests
-        <span class="badge text-bg-success"
-          >{%= details?.detailsCategory?.totalRecords %}</span
-        >
-      </button>
+  <a href="/admin/category">
+    <button id="category" type="button" class="btn btn-primary">
+      Category Requests
+      <span class="badge text-bg-success"
+        >{%= details?.detailsCategory?.totalRecords %}</span
+      >
+    </button>
   </a>
   <button id="comment" type="button" class="btn btn-primary">
     Comment Requests
@@ -30,32 +28,37 @@
     >
   </button>
 </div>
+{%- include('partials/footer') -%}
 
-{% if (details) { %}
-<p>details: {%= details %} {%= console.log(details) %}</p>
+
+
+<!-- {% if (details) { %} 
+<p>details: {%= details %} {%= console.log("details") %}</p>
+<p>details: {%= details %}</p>
 {% } %} {% if (data) { %}
-<p>data: {%= data %} data: {%= console.log(data) %}</p>
-{% } %} {%- include('partials/footer') -%}
+<p>data: {%= data %} data: {%= console.log("data") %}</p>
+<p>data: {%= data %}</p>
+{% } %}  -->
 
-<script>
-    document.getElementById('buttons').addEventListener('click',(e) => {
-        switch (e.target.id) {
-            case "blog":
-            console.log('blog clicked');
-            (res,req)=> res.render("adminCategory", {
-    data: {e}
+<!-- <script>
+  document.getElementById("buttons").addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "blog":
+        console.log("blog clicked");
+        (res, req) =>
+          res.render("adminCategory", {
+            data: { e },
+          });
+        break;
+      case "category":
+        console.log("category clicked");
+        break;
+      case "comment":
+        console.log("comment clicked");
+        break;
+      case "report":
+        console.log("report clicked");
+        break;
+    }
   });
-                break;
-            case "category":
-            console.log('category clicked');
-                break;
-            case "comment":
-            console.log('comment clicked');
-                break;
-            case "report":
-            console.log('report clicked');
-                break;
-        }
-    })
-
-</script>
+</script> -->
