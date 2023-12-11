@@ -1,12 +1,14 @@
 {%- include('partials/header') -%}
 
 <div id="buttons" class="d-grid col-6 mx-auto gap-2">
-  <button id="blog" type="button" class="btn btn-primary">
-    Blog Requests
-    <span class="badge text-bg-success"
-      >{%= details?.detailsBlog?.totalRecords %}</span
-    >
-  </button>
+  <a href="/admin/blog">
+    <button id="blog" type="button" class="btn btn-primary">
+      Blog Requests
+      <span class="badge text-bg-success"
+        >{%= details?.detailsBlog?.totalRecords %}</span
+      >
+    </button>
+  </a>
   <a href="/admin/category">
     <button id="category" type="button" class="btn btn-primary">
       Category Requests
@@ -15,18 +17,22 @@
       >
     </button>
   </a>
-  <button id="comment" type="button" class="btn btn-primary">
-    Comment Requests
-    <span class="badge text-bg-success"
-      >{%= details?.detailsComment?.totalRecords %}</span
-    >
-  </button>
-  <button id="report" type="button" class="btn btn-primary">
-    Report Requests
-    <span class="badge text-bg-success"
-      >{%= details?.detailsReport?.totalRecords %}</span
-    >
-  </button>
+  <a href="/admin/comment">
+    <button id="comment" type="button" class="btn btn-primary">
+      Comment Requests
+      <span class="badge text-bg-success"
+        >{%= details?.detailsComment?.totalRecords %}</span
+      >
+    </button>
+  </a>
+  <a href="/admin/comment">
+    <button id="report" type="button" class="btn btn-primary">
+      Report Requests
+      <span class="badge text-bg-success"
+        >{%= details?.detailsReport?.totalRecords %}</span
+      >
+    </button>
+  </a>
 </div>
 {%- include('partials/footer') -%}
 
