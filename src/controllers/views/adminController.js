@@ -103,7 +103,7 @@ module.exports = {
           break;
       }
     } else {
-      list(req, res, Blog,"adminBlog", ["creator"]);
+      list(req, res, Blog,"adminBlog", ["category","creator"]);
     }
   },
   // category : async (req,res) => {

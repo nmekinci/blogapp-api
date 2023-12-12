@@ -3,11 +3,39 @@
 <h1>admin Blog</h1>
 <h6>total records: {%= data?.length %}</h6>
 
+            <div class="d-flex m-3 justify-content-evenly flex-wrap">
+
+                {% data.map( (item)=> { %}
+                    <div class="card d-flex gap-2 m-3 " style="width: 18rem">
+                        <img src="{%= item?.image %}" class="card-img-top" alt="{%= item?.image %}">
+                        <div class="card-body p-2   ">
+                            <p class="card-text">Id: {%= item?._id %}</p>
+                            <p class="card-text">Category: {%= item?.category?.title %}</p>
+                            <h5 class="card-title">Creator: {%= item?.creator?.userName %}</h5>
+                            <h5 class="card-title">Title: {%= item?.title %}</h5>
+                            <p class="card-text">Content: {%= item?.content %}</p>
+                            <p class="card-text">approvedByAdmin: {%= item?.approvedByAdmin %}</p>
+                            <p class="card-text">LikesCounter: {%= item?.likesCounter %}</p>
+                            <p class="card-text">ViewsCounter: {%= item?.viewsCounter %}</p>
+                            <p class="card-text">CommentsCounter: {%= item?.commentsCounter %}</p>
+                            <p class="card-text">ReportsCounter: {%= item?.reportsCounter %}</p>
+                            <p class="card-text">createdAt: {%= item?.createdAt %}</p>
+                            <p class="card-text">updatedAt: {%= item?.updatedAt %}</p>
+                            <a href="#" class="btn btn-success">Approve</a>
+                            <a href="#" class="btn btn-danger">Reject</a>
+                        </div>
+
+                    </div>
+                {% } ); %}
+
+            </div>
 
 <div class="text-center">
     <a href="/admin" class="btn btn-primary">Go to AdminPanel</a>
 </div>
 <p>data: {%= data %}</p>
+<div class="mb-5">For margin</div>
+
 
 
 {%- include('partials/footer') -%}
