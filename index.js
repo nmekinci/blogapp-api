@@ -51,6 +51,7 @@ app.all('/view', (req,res) => {
 })
 app.use('/admin', require('./src/routes/views/adminViewRoute'))
 app.use('/admin/category', require('./src/routes/views/adminCategoryRoute'))
+app.use('/admin/blog', require('./src/routes/views/adminBlogRoute'))
 
 
 //Home Path for API service and JWT
