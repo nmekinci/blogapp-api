@@ -156,7 +156,7 @@ module.exports = {
           break;
       }
     } else {
-      list(req, res, Comment, ["userId", "blogId"]);
+      list(req, res, Comment,"adminComment", ["userId", "blogId"]);
     }
   },
   // report : async (req,res) => {
