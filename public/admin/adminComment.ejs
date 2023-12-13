@@ -1,8 +1,27 @@
 {%- include('partials/header') -%}
-<h1>admin category</h1>
+<h1>admin comment</h1>
 <h6>total records: {%= data?.length %}</h6>
 
 <div class="d-flex m-3 justify-content-evenly flex-wrap">
+
+    {% data.map( (item)=> { %}
+        <div class="card d-flex gap-2 m-3 " style="width: 18rem">
+
+            <div class="card-body p-2">
+                <p class="card-text">Id: {%= item?._id %}</p>
+                <p class="card-title">userId: {%= item?.userId?._id %}</p>
+                <h5 class="card-title">userName: {%= item?.userId?.userName %}</h5>
+                <p class="card-title">blogId: {%= item?.blogId?._id %}</p>
+                <p class="card-title">Comment: {%= item?.comment %}</p>
+                <p class="card-title">approvedByAdmin: {%= item?.approvedByAdmin %}</p>
+                <p class="card-title">createdAt: {%= item?.createdAt %}</p>
+                <p class="card-title">updatedAt: {%= item?.updatedAt %}</p>
+                <a href="#" class="btn btn-success">Approve</a>
+                <a href="#" class="btn btn-danger">Reject</a>
+            </div>
+
+        </div>
+    {% } ); %}
 
 
 
