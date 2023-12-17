@@ -182,7 +182,8 @@ module.exports = {
           break;
       }
     } else {
-      list(req, res, Report,"adminReport", ["userId", "blogId"]);
+      // list(req, res, Report,"adminReport", ["userId", "blogId"]);
+      list(req, res, Report,"adminReport", ["userId", { path: "blogId", populate: { path: 'category' } }]);
     }
   },
 };

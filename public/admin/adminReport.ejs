@@ -10,7 +10,11 @@
             <div class="card-body p-2">
                 <p class="card-text">Id: {%= item?._id %}</p>
                 <p class="card-title">userId: {%= item?.userId?._id %}</p>
+                <p class="card-title">userName: {%= item?.userId?.userName %}</p>
                 <p class="card-title">blogId: {%= item?.blogId?._id %}</p>
+                <p class="card-title">blogTitle: {%= item?.blogId?.title %}</p>
+                <p class="card-title">blogCategoryId: {%= item?.blogId?.category?._id %}</p>
+                <p class="card-title">blogCategoryTitle: {%= item?.blogId?.category?.title %}</p>
                 <p class="card-title">Report: {%= item?.report %}</p>
             </div>
 
