@@ -53,6 +53,7 @@ app.use('/admin', require('./src/routes/views/adminViewRoute'))
 app.use('/admin/category', require('./src/routes/views/adminCategoryRoute'))
 app.use('/admin/blog', require('./src/routes/views/adminBlogRoute'))
 app.use('/admin/comment', require('./src/routes/views/adminCommentRoute'))
+app.use('/admin/report', require('./src/routes/views/adminReportRoute'))
 
 
 //Home Path for API service and JWT

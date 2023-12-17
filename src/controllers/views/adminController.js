@@ -182,7 +182,7 @@ module.exports = {
           break;
       }
     } else {
-      list(req, res, Report, ["userId", "blogId"]);
+      list(req, res, Report,"adminReport", ["userId", "blogId"]);
     }
   },
 };
