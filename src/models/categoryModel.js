@@ -15,7 +15,7 @@ const CategorySchema = new mongoose.Schema(
         trim:true,
         unique: true
     },
-    "approvedByAdmin": {
+    approvedByAdmin: {
         type:String,
         required:true,
         enum: ["waiting", "seen", "ok", "refused"] 

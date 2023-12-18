@@ -47,7 +47,8 @@ module.exports = {
                 schema: {
                     "userId": "test",
                     "blogId": "test",
-                    "approvedByAdmin": enum: ["waiting", "seen", "ok", "refused"],
+                    "report":"string",
+                    "approvedByAdmin": enum: ["waiting", "seen", "ok", "refused"]
                     },
             }
     */
@@ -69,7 +70,8 @@ module.exports = {
                 schema: {
                     "userId": "test",
                     "blogId": "test",
-                    "approvedByAdmin": enum: ["waiting", "seen", "ok", "refused"],
+                    "report":"string",
+                    "approvedByAdmin": enum: ["waiting", "seen", "ok", "refused"]
                     },
             }
     */
