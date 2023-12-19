@@ -32,13 +32,14 @@ const read = async (req, res, modelName, populate) => {
     data,
   });
 };
-const update = async (req, res, modelName) => {
+const update = async (req, res, modelName,path) => {
   if (req && req.body) {
     req.body.approvedByAdmin = "ok";
   }
   // req?.body?.approvedByAdmin = 'ok'
-  const data = await modelName.updateOne({ _id: req.params.id, ...filter });
-  res.render(`${modelName}Update`, {
+  const data = await modelName.updateOne({ _id: req.params.id},req.body.approvedByAdmin,{ runValidators: true });
+  // res.render(`${modelName}Update`, {
+  res.render(path, {
     data,
   });
 };
@@ -96,7 +97,7 @@ module.exports = {
           await read(req, res, Blog, ["creator"]);
           break;
         case "PUT":
-          await update(req, res, Blog);
+          await update(req, res, Blog,"adminBlog");
           break;
         case "DELETE":
           await del(req, res, Blog);
