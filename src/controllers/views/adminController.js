@@ -34,14 +34,18 @@ const read = async (req, res, modelName, populate) => {
 };
 const update = async (req, res, modelName,path) => {
   if (req && req.body) {
+    console.log('ok');
     req.body.approvedByAdmin = "ok";
+    console.log(req.body);
   }
   // req?.body?.approvedByAdmin = 'ok'
-  const data = await modelName.updateOne({ _id: req.params.id},req.body.approvedByAdmin,{ runValidators: true });
+  const data = await modelName.updateOne({ _id: req.params.id},req.body,{ runValidators: true });
+  console.log(data);
   // res.render(`${modelName}Update`, {
-  res.render(path, {
-    data,
-  });
+  // res.render(path, {
+  //   data,
+  // });
+  res.redirect('/admin')
 };
 const del = async (req, res, modelName) => {
   if (req && req.body) {
@@ -92,14 +96,15 @@ module.exports = {
   },
   blog: async (req, res) => {
     if (req?.params?.id) {
-      switch (req?.method) {
-        case "GET":
-          await read(req, res, Blog, ["creator"]);
-          break;
-        case "PUT":
+      // console.log(req.path.split('/')[2]);
+      switch (req.path.split('/')[2]) {
+        // case "GET":
+        //   await read(req, res, Blog, ["creator"]);
+        //   break;
+        case "update":
           await update(req, res, Blog,"adminBlog");
           break;
-        case "DELETE":
+        case "delete":
           await del(req, res, Blog);
           break;
       }

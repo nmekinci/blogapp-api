@@ -14,8 +14,8 @@ router.route("/")
 //     .put(admin.blog)
 //     .delete(admin.blog)
 
-router.route("/:id/update")
-    .put(admin.blog)
+router.all("/:id/update",admin.blog)
+    // .put(admin.blog)
 
 router.route("/:id/delete")
     .delete(admin.blog)
