@@ -45,6 +45,7 @@ const update = async (req, res, modelName,path) => {
   // res.render(path, {
   //   data,
   // });
+  
   res.redirect('/admin')
 };
 const del = async (req, res, modelName) => {
