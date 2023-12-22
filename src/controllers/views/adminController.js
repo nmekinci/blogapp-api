@@ -49,9 +49,9 @@ const update = async (req, res, modelName,path) => {
   res.redirect('/admin')
 };
 const del = async (req, res, modelName) => {
-  if (req && req.body) {
-    req.body.approvedByAdmin = "refused";
-  }
+  // if (req && req.body) {
+  //   req.body.approvedByAdmin = "refused";
+  // }
   // req?.body?.approvedByAdmin = 'refused'
   const data = await modelName.deleteOne({ _id: req.params.id, ...filter });
   res.redirect("/admin");

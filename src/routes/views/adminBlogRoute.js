@@ -17,7 +17,7 @@ router.route("/")
 router.all("/:id/update",admin.blog)
     // .put(admin.blog)
 
-router.route("/:id/delete")
-    .delete(admin.blog)
+router.all("/:id/delete",admin.blog)
+    // .delete(admin.blog)
 
 module.exports = router
