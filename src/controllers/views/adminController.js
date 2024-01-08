@@ -129,7 +129,7 @@ module.exports = {
         //   await read(req, res, Category, ["userId"]);
         //   break;
         case "update":
-          await update(req, res, Category,"adminBlog");
+          await update(req, res, Category,"adminCategory");
           break;
         case "delete":
           await del(req, res, Category);
@@ -151,14 +151,14 @@ module.exports = {
   // },
   comment: async (req, res) => {
     if (req?.params?.id) {
-      switch (req?.method) {
-        case "GET":
-          await read(req, res, Comment, ["userId", "blogId"]);
+      switch (req.path.split('/')[2]) {
+        // case "GET":
+        //   await read(req, res, Comment, ["userId", "blogId"]);
+        //   break;
+        case "update":
+          await update(req, res, Comment,"adminComment");
           break;
-        case "PUT":
-          await update(req, res, Comment);
-          break;
-        case "DELETE":
+        case "delete":
           await del(req, res, Comment);
           break;
       }
