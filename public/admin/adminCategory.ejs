@@ -16,8 +16,8 @@
                             <h5 class="card-title">approvedByAdmin: {%= item?.approvedByAdmin %}</h5>
                             <h5 class="card-title">createdAt: {%= item?.createdAt %}</h5>
                             <h5 class="card-title">updatedAt: {%= item?.updatedAt %}</h5>
-                            <a href="#" class="btn btn-success">Approve</a>
-                            <a href="#" class="btn btn-danger">Reject</a>
+                            <a href="category/{%= item?._id %}/update" class="btn btn-success">Approve</a>
+                            <a href="category/{%= item?._id %}/delete" class="btn btn-danger">Reject</a>
                         </div>
 
                     </div>

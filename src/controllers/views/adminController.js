@@ -124,14 +124,14 @@ module.exports = {
   // },
   category: async (req, res) => {
     if (req?.params?.id) {
-      switch (req?.method) {
-        case "GET":
-          await read(req, res, Category, ["userId"]);
+      switch (req.path.split('/')[2]) {
+        // case "GET":
+        //   await read(req, res, Category, ["userId"]);
+        //   break;
+        case "update":
+          await update(req, res, Category,"adminBlog");
           break;
-        case "PUT":
-          await update(req, res, Category);
-          break;
-        case "DELETE":
+        case "delete":
           await del(req, res, Category);
           break;
       }
