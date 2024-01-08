@@ -61,7 +61,8 @@ app.all('/api', (req,res) => {
     res.send({
         error: false,
         message: "It's Blog API service, Wellcome..",
-        documents: '👉/documents'
+        documents: '👉/documents',
+        admin:'for admin panel 👉/view'
         // isLogin: req.isLogin,
         // user: req.user
     })
